@@ -763,38 +763,62 @@ body {
 
 .cal-cta {
     display: flex;
-    gap: 8px;
+    gap: 12px;
     width: 100%;
-    padding: 10px 0 20px
+    padding: 12px 2px 24px;
+    justify-content: center;
 }
 
 .btn-ol {
-    padding: 12px;
-    border-radius: 8px;
+    padding: 10px 16px;
+    border-radius: 50px;
     border: 1px solid var(--bdr);
     background: transparent;
     color: var(--ink3);
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
     cursor: pointer;
-    flex: 1
+    flex: 0 1 auto;
+    min-width: 120px;
+    transition: all .2s;
+}
+
+.btn-ol:hover {
+    border-color: var(--g);
+    color: var(--g);
+    background: rgba(201, 168, 76, .05);
 }
 
 .btn-sl {
-    padding: 12px;
-    border-radius: 8px;
+    padding: 10px 20px;
+    border-radius: 50px;
     border: none;
-    background: var(--g);
+    background: linear-gradient(135deg, var(--gl), var(--g));
     color: #fff;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
     text-transform: uppercase;
     cursor: pointer;
-    flex: 1.5;
+    flex: 0 1 auto;
+    min-width: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px
+    gap: 8px;
+    box-shadow: 0 4px 12px var(--gw);
+    transition: all .2s;
+}
+
+.btn-sl:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px var(--gw);
+}
+
+.btn-sl:active {
+    transform: translateY(0);
 }
 
 /* Confirmation Modal */
