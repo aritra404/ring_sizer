@@ -200,8 +200,8 @@ function initCalibScreen() {
         obj.classList.add('rect-v');
         // Vertical card. Height = calibPx. Width = Height * ratio
         // Initial setup
-        calibPx = Math.round(window.screen.height * 0.4); // 40% of screen height vertical
-        calibPx = clamp(calibPx, 200, 800);
+        calibPx = Math.round(window.screen.height * 0.85); // 85% of screen height vertical
+        calibPx = clamp(calibPx, 300, 2000);
     } else {
         obj.classList.add('circle');
         calibPx = Math.round(window.screen.width * 0.4); // 40% of screen width
