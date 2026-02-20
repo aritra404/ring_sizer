@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="coin10Grad" cx="38%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f5d97a"/>
+      <stop offset="30%" stop-color="#e8b84b"/>
+      <stop offset="70%" stop-color="#b8832a"/>
+      <stop offset="100%" stop-color="#7a5215"/>
+    </radialGradient>
+    <radialGradient id="coin10InnerGrad" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#c0c0c0"/>
+      <stop offset="40%" stop-color="#a0a0a0"/>
+      <stop offset="100%" stop-color="#707070"/>
+    </radialGradient>
+    <radialGradient id="shineGrad" cx="30%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="coinShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.5)"/>
+    </filter>
+  </defs>
+
+  <!-- Outer gold ring -->
+  <circle cx="100" cy="100" r="96" fill="url(#coin10Grad)" filter="url(#coinShadow)"/>
+  <!-- Edge detail ring -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#a87828" stroke-width="3"/>
+  <!-- Milled edge dots -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#f5d97a" stroke-width="1.5" stroke-dasharray="3 4.5"/>
+
+  <!-- Inner silver circle -->
+  <circle cx="100" cy="100" r="70" fill="url(#coin10InnerGrad)"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#888" stroke-width="1.5"/>
+
+  <!-- Ashoka Pillar (top half) -->
+  <g fill="#e0e0e0" transform="translate(100,68)">
+    <!-- Lion heads simplified -->
+    <rect x="-10" y="-14" width="20" height="6" rx="3" fill="#d5d5d5"/>
+    <rect x="-14" y="-10" width="28" height="4" rx="2" fill="#c8c8c8"/>
+    <!-- Pillar shaft -->
+    <rect x="-4" y="-4" width="8" height="18" rx="2" fill="#d5d5d5"/>
+    <!-- Capital base -->
+    <rect x="-10" y="14" width="20" height="4" rx="2" fill="#c0c0c0"/>
+    <!-- Wheel (Dharmachakra) -->
+    <circle cx="0" cy="22" r="7" fill="none" stroke="#c0c0c0" stroke-width="1.5"/>
+    <line x1="0" y1="15" x2="0" y2="29" stroke="#c0c0c0" stroke-width="1"/>
+    <line x1="-7" y1="22" x2="7" y2="22" stroke="#c0c0c0" stroke-width="1"/>
+    <line x1="-5" y1="17" x2="5" y2="27" stroke="#c0c0c0" stroke-width="0.8"/>
+    <line x1="5" y1="17" x2="-5" y2="27" stroke="#c0c0c0" stroke-width="0.8"/>
+  </g>
+
+  <!-- INDIA text -->
+  <text x="100" y="125" text-anchor="middle" font-family="serif" font-size="10" fill="#c8c8c8" font-weight="bold" letter-spacing="2">INDIA</text>
+  <!-- भारत text -->
+  <text x="100" y="137" text-anchor="middle" font-family="serif" font-size="9" fill="#c0c0c0" letter-spacing="1">भारत</text>
+
+  <!-- Denomination 10 on gold ring at bottom -->
+  <text x="100" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#1a0a00" letter-spacing="1">₹10</text>
+
+  <!-- Shine overlay -->
+  <circle cx="100" cy="100" r="96" fill="url(#shineGrad)"/>
+</svg>

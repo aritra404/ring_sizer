@@ -68,8 +68,6 @@ function setupEventListeners() {
     document.getElementById('cbadge')?.addEventListener('click', () => go('sel'));
     document.getElementById('dark-mode-btn')?.addEventListener('click', tDark);
     document.getElementById('fs-btn')?.addEventListener('click', tFS);
-    document.getElementById('fs-bar-enter-btn')?.addEventListener('click', tFS);
-    document.getElementById('fs-bar-close-btn')?.addEventListener('click', () => document.getElementById('fsbar').classList.remove('on'));
 
     document.getElementById('land-start-btn')?.addEventListener('click', () => go('sel'));
 
@@ -91,7 +89,6 @@ function setupEventListeners() {
     document.getElementById('mbar-minus')?.addEventListener('click', () => nudge(-0.1));
     document.getElementById('msl')?.addEventListener('input', (e) => setD(+e.target.value));
     document.getElementById('mbar-plus')?.addEventListener('click', () => nudge(+0.1));
-    document.getElementById('dsl')?.addEventListener('input', (e) => setD(+e.target.value));
 
     ['nudge-m1', 'nudge-m05', 'nudge-m01', 'nudge-p01', 'nudge-p05', 'nudge-p1'].forEach(id => {
         const val = parseFloat(id.replace('nudge-', '').replace('m', '-').replace('p', ''));
@@ -118,10 +115,17 @@ function setupEventListeners() {
 }
 
 // ─── ROUTER ────────────────────────────────────────────────
+let curScr = 'land';
+
 function go(id) {
+    curScr = id;
     document.querySelectorAll('.scr').forEach(s => s.classList.remove('on'));
     const target = document.getElementById('s-' + id);
     if (target) target.classList.add('on');
+
+    // Handle Back Button Visibility
+    const bBtn = document.getElementById('back-btn');
+    if (bBtn) bBtn.classList.toggle('hide', id === 'land');
 
     // If going to landing, clean history
     if (id === 'land') {
@@ -136,11 +140,25 @@ function go(id) {
 
     if (id === 'meas') {
         setTimeout(initCvs, 50);
-        document.getElementById('fsbar').classList.add('on');
-        document.getElementById('nocal-overlay').classList.toggle('hide', !!mppCSS);
+        // Show non-blocking banner if not calibrated
+        const banner = document.getElementById('nocal-banner');
+        if (banner) banner.classList.toggle('hide', !!mppCSS);
+    }
+
+    // Toggle full-screen calibration mode
+    if (id === 'calib') {
+        document.body.classList.add('calib-mode');
+    } else {
+        document.body.classList.remove('calib-mode');
     }
 
     window.scrollTo(0, 0);
+}
+
+function back() {
+    if (curScr === 'sel') go('land');
+    else if (curScr === 'calib') go('sel');
+    else if (curScr === 'meas') go('calib');
 }
 
 // ─── INIT ──────────────────────────────────────────────────
@@ -191,27 +209,33 @@ function initCalibScreen() {
     document.getElementById('cal-instr').textContent = cfg.instr;
 
     const obj = document.getElementById('cal-obj');
-    const label = document.getElementById('obj-label');
-
-    // Reset classes
     obj.className = '';
 
-    if (cfg.type === 'rect-v') {
-        obj.classList.add('rect-v');
-        // Vertical card. Height = calibPx. Width = Height * ratio
-        // Initial setup
-        calibPx = Math.round(window.screen.height * 0.85); // 85% of screen height vertical
-        calibPx = clamp(calibPx, 300, 2000);
-    } else {
-        obj.classList.add('circle');
-        calibPx = Math.round(window.screen.width * 0.4); // 40% of screen width
-    }
+    // Measure the actual arena to avoid clipping
+    const arena = document.getElementById('card-arena');
+    // Allow DOM to settle before reading dimensions
+    requestAnimationFrame(() => {
+        const aH = arena ? arena.clientHeight : window.innerHeight * 0.55;
+        const aW = arena ? arena.clientWidth : window.innerWidth;
+        // Leave 80px headroom for the label + handle bottom
+        const maxFit = Math.min(aW * 0.82, aH - 80);
 
-    // Slider setup
-    const sl = document.getElementById('cal-fine');
-    sl.min = 100; sl.max = 1200; sl.value = calibPx;
+        if (cfg.type === 'rect-v') {
+            obj.classList.add('rect-v');
+            // Card height should fit in arena height, keep aspect ratio
+            calibPx = clamp(Math.round(maxFit * 0.9), 150, 900);
+        } else {
+            obj.classList.add('circle');
+            // Circle diameter must fit both width and height
+            calibPx = clamp(Math.round(maxFit * 0.75), 80, 600);
+        }
 
-    updateObjRender();
+        const sl = document.getElementById('cal-fine');
+        const maxSlider = cfg.type === 'rect-v' ? 900 : 600;
+        sl.min = 60; sl.max = maxSlider; sl.value = calibPx;
+
+        updateObjRender();
+    });
 }
 
 function updateObjRender() {
@@ -300,6 +324,8 @@ function saveAndProceeed() {
     setBadge(true);
     toast('✓ Saved! ' + mppCSS.toFixed(4) + ' mm/px');
     vibe(50);
+    // Hide uncal banner
+    document.getElementById('nocal-banner')?.classList.add('hide');
     setTimeout(() => go('meas'), 500);
 }
 
@@ -416,6 +442,19 @@ function MM(e) {
 }
 function MU() { drag = false; cvs.style.cursor = 'default'; }
 
+function setD(v) {
+    if (snap) v = Math.round(v * 2) / 2;
+    diam = clamp(v, 5, 40);
+    syncAll();
+    draw();
+}
+
+function nudge(delta) {
+    setD(diam + delta);
+    vibe(8);
+}
+
+
 function draw() {
     if (!ctx || !cW) return;
     const W = cW, H = cH, cx = CX(), cy = CY(), r = rPx();
@@ -490,16 +529,16 @@ function syncAll() {
 
     if (mppCSS) {
         if (diameter_mm < 12) {
-            if (warnBox) warnBox.style.display = 'flex';
+            warnBox?.classList.remove('hide');
             if (warnMsg) warnMsg.textContent = 'Too small (< 12mm). Re-calibrate if needed.';
         } else if (diameter_mm > 25) {
-            if (warnBox) warnBox.style.display = 'flex';
+            warnBox?.classList.remove('hide');
             if (warnMsg) warnMsg.textContent = 'Very large (> 25mm). Check calibration.';
         } else {
-            if (warnBox) warnBox.style.display = 'none';
+            warnBox?.classList.add('hide');
         }
     } else {
-        if (warnBox) warnBox.style.display = 'none';
+        warnBox?.classList.add('hide');
     }
 
     const circ = diameter_mm * Math.PI;
@@ -510,12 +549,11 @@ function syncAll() {
     const s = sz(diameter_mm);
 
     const pct = (diameter_mm - 5) / (40 - 5) * 100;
-    ['dsl', 'msl'].forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.value = diameter_mm;
-        el.style.setProperty('--p', pct + '%');
-    });
+    const slEl = document.getElementById('msl');
+    if (slEl) {
+        slEl.value = diameter_mm;
+        slEl.style.setProperty('--p', pct + '%');
+    }
 
     set('bn', diameter_mm.toFixed(2));
     set('mn', diameter_mm.toFixed(2));
@@ -658,5 +696,6 @@ function cpLink() {
 
 // Make functions globally available for inline onclick handlers
 window.go = go;
+window.back = back;
 window.selectObj = selectObj;
 window.saveAndProceeed = saveAndProceeed;

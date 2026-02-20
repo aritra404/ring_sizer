@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Aurum Ring Sizer — Precision Jewelry Measurement</title>
+  <title>Aurum Ring Sizer &mdash; Precision Jewelry Measurement</title>
   <meta name="theme-color" content="#0e0b07">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
@@ -17,46 +17,42 @@
 
   <!-- HEADER -->
   <header id="hdr">
-    <div class="logo" id="logo-btn">
-      <div class="logo-ring">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
-        </svg>
-      </div>
-      <span class="logo-name">AURUM <b>SIZER</b></span>
-    </div>
-    <div class="hdr-r">
-      <div id="cbadge" class="bad">
-        <div class="dot"></div><span id="cbtxt">Not Calibrated</span>
-      </div>
-      <button class="ibtn" title="Dark mode" id="dark-mode-btn">
-        <svg id="dico" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
-        </svg>
-      </button>
-      <button class="ibtn" title="Fullscreen" id="fs-btn">
+    <div class="hdr-l">
+      <button class="ibtn hide" id="back-btn" title="Back" onclick="back()">
         <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
         </svg>
       </button>
-    </div>
+      <div class="logo" id="logo-btn">
+        <div class="logo-ring">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
+          </svg>
+        </div>
+        <span class="logo-name">AURUM <b>SIZER</b></span>
+      </div>
+      <div class="hdr-r">
+        <div id="cbadge" class="bad">
+          <div class="dot"></div><span id="cbtxt">Not Calibrated</span>
+        </div>
+        <button class="ibtn" title="Dark mode" id="dark-mode-btn">
+          <svg id="dico" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+          </svg>
+        </button>
+        <button class="ibtn" title="Fullscreen" id="fs-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+          </svg>
+        </button>
+      </div>
   </header>
-
-  <!-- FS BAR -->
-  <div id="fsbar">
-    <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;color:var(--g)">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
-    </svg>
-    Fullscreen gives best accuracy
-    <button id="fs-bar-enter-btn">Enter Fullscreen</button>
-    <button class="xb" id="fs-bar-close-btn">×</button>
-  </div>
 
   <div id="toast"></div>
 
-  <!-- ══════════════ LANDING ══════════════ -->
+  <!-- ———————————— LANDING ———————————— -->
   <section class="scr on" id="s-land">
     <div class="land-content">
       <div class="hero">
@@ -105,7 +101,7 @@
     </div>
   </section>
 
-  <!-- ══════════════ OBJECT SELECTION ══════════════ -->
+  <!-- ———————————— OBJECT SELECTION ———————————— -->
   <section class="scr" id="s-sel">
     <div class="land-content">
       <div class="cal-bar-title" style="margin-bottom:20px">Calibration Object</div>
@@ -126,28 +122,36 @@
           </div>
         </button>
         <button class="sel-opt" onclick="selectObj('coin10')">
-          <div class="sel-icon coin">₹10</div>
+          <div class="sel-icon coin">
+            <img src="images/coin10.svg" alt="₹10 Coin" class="coin-img">
+          </div>
           <div class="sel-tx">
             <b>₹10 Coin</b>
             <span>Common</span>
           </div>
         </button>
         <button class="sel-opt" onclick="selectObj('coin5')">
-          <div class="sel-icon coin">₹5</div>
+          <div class="sel-icon coin">
+            <img src="images/coin5.svg" alt="₹5 Coin" class="coin-img">
+          </div>
           <div class="sel-tx">
             <b>₹5 Coin</b>
             <span>Standard</span>
           </div>
         </button>
         <button class="sel-opt" onclick="selectObj('coin2')">
-          <div class="sel-icon coin">₹2</div>
+          <div class="sel-icon coin">
+            <img src="images/coin2.svg" alt="₹2 Coin" class="coin-img">
+          </div>
           <div class="sel-tx">
             <b>₹2 Coin</b>
             <span>Small</span>
           </div>
         </button>
         <button class="sel-opt" onclick="selectObj('coin1')">
-          <div class="sel-icon coin">₹1</div>
+          <div class="sel-icon coin">
+            <img src="images/coin1.svg" alt="₹1 Coin" class="coin-img">
+          </div>
           <div class="sel-tx">
             <b>₹1 Coin</b>
             <span>Smallest</span>
@@ -159,7 +163,7 @@
     </div>
   </section>
 
-  <!-- ══════════════ CALIBRATION ══════════════ -->
+  <!-- ———————————— CALIBRATION ———————————— -->
   <section class="scr" id="s-calib">
     <!-- Step indicator -->
     <div class="cal-steps">
@@ -202,7 +206,7 @@
 
       <!-- Fine adjustment slider -->
       <div class="fine-row">
-        <button class="fb" id="cal-minus">−</button>
+        <button class="fb" id="cal-minus">&minus;</button>
         <input type="range" class="fine-sl" id="cal-fine" min="100" max="1000" step="1">
         <button class="fb" id="cal-plus">+</button>
       </div>
@@ -233,203 +237,169 @@
       </div>
     </div>
   </section>
-
-  <!-- ══════════════ MEASURE ══════════════ -->
+  <!-- ———————————— MEASURE ———————————— -->
   <section class="scr" id="s-meas">
-    <div class="mwrap">
+    <div id="meas-wrap">
+
+      <!-- Canvas pane -->
       <div id="cvp">
         <canvas id="cvs"></canvas>
-        <div class="cv-tl">⌀ <span id="cv-d">—</span> mm</div>
-        <div class="cv-tl" id="zbadge">2× Zoom</div>
-        <!-- No-calibration overlay -->
-        <div id="nocal-overlay" class="hide">
-          <svg viewBox="0 0 24 24" fill="var(--g)" width="40" height="40">
+        <div class="cv-tl">&#8960; <span id="cv-d">&mdash;</span> mm</div>
+        <div class="cv-tl" id="zbadge" style="display:none">2&times; Zoom</div>
+        <div id="nocal-banner" class="hide">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
           </svg>
-          <p>Calibrate your screen first so measurements are accurate in real millimetres.</p>
-          <button class="btn-g" style="padding:11px 22px;font-size:13px" id="meas-recalib-btn">Calibrate Now</button>
+          Not calibrated &mdash; sizes are approximate
+          <button id="meas-recalib-btn">Calibrate</button>
         </div>
         <div class="cv-hint">
-          <svg viewBox="0 0 24 24" fill="currentColor">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
             <path
-              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
           </svg>
-          Drag the gold handle or use the slider
+          Drag the gold handle &middot; use slider &middot; or nudge buttons
         </div>
       </div>
 
-      <!-- Mobile bar -->
-      <div class="mbar">
-        <button class="fb" style="flex:0 0 36px;height:36px;border-radius:8px" id="mbar-minus">−</button>
-        <input type="range" id="msl" min="5" max="40" step="0.1" style="flex:1">
-        <button class="fb" style="flex:0 0 36px;height:36px;border-radius:8px" id="mbar-plus">+</button>
-        <div class="mbar-num"><span id="mn">—</span><span class="mbar-u"> mm</span></div>
-      </div>
-
-      <!-- Results panel -->
+      <!-- Results / control panel -->
       <div id="rp">
-        <!-- Control -->
-        <div class="pc">
-          <div class="pch">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-            </svg>
-            Inner Diameter
+
+        <!-- Slider card -->
+        <div class="rcard slider-card">
+          <div class="slider-top">
+            <span class="slider-label">Inner Diameter</span>
+            <div class="bignum"><span id="bn">18.00</span><span class="bnu">mm</span></div>
           </div>
-          <div class="bignum"><span class="n" id="bn">—</span><span class="u">mm</span></div>
-          <input type="range" id="dsl" min="5" max="40" step="0.1">
-          <div class="frow">
-            <button class="fb" id="nudge-m1">−1</button>
-            <button class="fb" id="nudge-m05">−½</button>
-            <button class="fb" id="nudge-m01">−0.1</button>
-            <span class="fm">mm</span>
-            <button class="fb" id="nudge-p01">+0.1</button>
-            <button class="fb" id="nudge-p05">+½</button>
-            <button class="fb" id="nudge-p1">+1</button>
+          <div class="slider-row">
+            <button class="fb" id="mbar-minus">&minus;</button>
+            <div class="msl-wrap">
+              <input type="range" id="msl" min="5" max="40" step="0.1" value="18">
+              <div class="msl-labels"><span>5</span><span>22</span><span>40 mm</span></div>
+            </div>
+            <button class="fb" id="mbar-plus">+</button>
+          </div>
+          <div class="nudge-row">
+            <button class="nb" id="nudge-m1">&minus;1</button>
+            <button class="nb" id="nudge-m05">&minus;&frac12;</button>
+            <button class="nb" id="nudge-m01">&minus;.1</button>
+            <span class="nbu">mm</span>
+            <button class="nb" id="nudge-p01">+.1</button>
+            <button class="nb" id="nudge-p05">+&frac12;</button>
+            <button class="nb" id="nudge-p1">+1</button>
+          </div>
+        </div>
+
+        <!-- Ring size cards -->
+        <div class="rcard">
+          <div class="rcard-label">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+            </svg>
+            Ring Size
+          </div>
+          <div class="sz-grid">
+            <div class="sz-card primary">
+              <div class="sz-flag sz-flag-in">IN</div>
+              <div class="sz-val" id="si">&mdash;</div>
+              <div class="sz-name">Indian</div>
+            </div>
+            <div class="sz-card">
+              <div class="sz-flag sz-flag-us">US</div>
+              <div class="sz-val" id="su">&mdash;</div>
+              <div class="sz-name">US / CA</div>
+            </div>
+            <div class="sz-card">
+              <div class="sz-flag sz-flag-uk">UK</div>
+              <div class="sz-val" id="sk">&mdash;</div>
+              <div class="sz-name">UK / AU</div>
+            </div>
+            <div class="sz-card">
+              <div class="sz-flag sz-flag-eu">EU</div>
+              <div class="sz-val" id="se">&mdash;</div>
+              <div class="sz-name">EU / ISO</div>
+            </div>
           </div>
         </div>
 
         <!-- Measurements -->
-        <div class="pc">
-          <div class="pch">
+        <div class="rcard">
+          <div class="rcard-label">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 14H7v-2h8v2zm3-4H7v-2h11v2zm0-4H7V6h11v2z" />
             </svg>
             Measurements
           </div>
-          <div class="mg">
-            <div class="mi"><span class="mv" id="md">—</span><span class="ml">Diameter mm</span></div>
-            <div class="mi"><span class="mv" id="mr">—</span><span class="ml">Radius mm</span></div>
-            <div class="mi wide"><span class="mv" id="mc">—</span><span class="ml">Circumference mm</span></div>
+          <div class="meas-grid">
+            <div class="meas-item"><span class="meas-v" id="md">&mdash;</span><span class="meas-l">Diameter
+                (mm)</span></div>
+            <div class="meas-item"><span class="meas-v" id="mr">&mdash;</span><span class="meas-l">Radius (mm)</span>
+            </div>
+            <div class="meas-item wide"><span class="meas-v" id="mc">&mdash;</span><span class="meas-l">Circumference
+                (mm)</span></div>
           </div>
         </div>
 
-        <!-- Sanity warning -->
-        <div id="warn-box" style="display:none;align-items:flex-start;gap:8px;padding:10px 12px;
-        border-radius:9px;background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.25);
-        font-size:12px;line-height:1.5;color:#a93226">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;flex-shrink:0;margin-top:1px">
+        <!-- Warning -->
+        <div id="warn-box" class="warn-box hide">
+          <svg viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
           </svg>
           <span id="warn-msg"></span>
         </div>
 
-        <!-- Ring sizes -->
-        <div class="pc">
-          <div class="pch">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-            </svg>
-            Ring Sizes
-          </div>
-          <table class="zt">
-            <thead>
-              <tr>
-                <th>Standard</th>
-                <th>Size</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>🇮🇳 Indian</td>
-                <td><span class="zn" id="si">—</span></td>
-              </tr>
-              <tr>
-                <td>🇺🇸 US / Canada</td>
-                <td><span class="zn" id="su">—</span></td>
-              </tr>
-              <tr>
-                <td>🇬🇧 UK / AUS</td>
-                <td><span class="zn" id="sk">—</span></td>
-              </tr>
-              <tr>
-                <td>🇪🇺 EU / ISO</td>
-                <td><span class="zn" id="se">—</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Tools -->
-        <div class="pc">
-          <div class="pch">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
-            </svg>
-            Accuracy Tools
-          </div>
-          <div class="tg2">
+        <!-- Tools & Export -->
+        <div class="rcard actions-card">
+          <div class="act-row">
             <button class="tg" id="snaptg">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm8-12v8h8V3h-8zm6 6h-4V5h4v4z" />
               </svg>
-              Snap 0.5mm
+              Snap
             </button>
             <button class="tg" id="zoomtg">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
               </svg>
-              Zoom 2×
+              Zoom
             </button>
-          </div>
-        </div>
-
-        <!-- Export -->
-        <div class="pc">
-          <div class="pch">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-            </svg>
-            Export &amp; Share
-          </div>
-          <div class="eg2">
             <button class="eb" id="exp-png-btn">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
               </svg>
-              Save PNG
+              PNG
             </button>
             <button class="eb" id="copy-link-btn">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
               </svg>
-              Copy Link
+              Link
+            </button>
+            <button class="eb" id="exp-pdf-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3z" />
+              </svg>
+              PDF
             </button>
           </div>
-          <button class="ef" id="exp-pdf-btn">
+          <button class="recal-btn" id="meas-recalib-bottom-btn">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path
-                d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3z" />
+                d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58z" />
             </svg>
-            Download PDF Report
+            Re-calibrate Screen
           </button>
         </div>
 
-        <div class="ibox">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
-          </svg>
-          Lay the ring flat on screen. Align the gold circle to the ring's inner edge. Use fullscreen for best accuracy.
-        </div>
-
-        <button class="btn-ol" style="width:100%;justify-content:center;padding:10px" id="meas-recalib-bottom-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58z" />
-          </svg>
-          Re-calibrate Screen
-        </button>
-      </div>
-    </div>
+      </div><!-- /#rp -->
+    </div><!-- /#meas-wrap -->
   </section>
 
   <script src="js/script.js"></script>
