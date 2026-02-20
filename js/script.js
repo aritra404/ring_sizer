@@ -97,10 +97,6 @@ function setupEventListeners() {
     document.getElementById('copy-link-btn')?.addEventListener('click', cpLink);
     document.getElementById('exp-pdf-btn')?.addEventListener('click', expPDF);
 
-    document.getElementById('meas-drawer-handle')?.addEventListener('click', () => {
-        document.getElementById('rp')?.classList.toggle('expanded');
-    });
-
     // Calib Object Drag
     const handle = document.getElementById('cal-handle');
     if (handle) {
