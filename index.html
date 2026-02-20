@@ -254,13 +254,6 @@
           Not calibrated &mdash; sizes are approximate
           <button id="meas-recalib-btn">Calibrate</button>
         </div>
-        <div class="cv-hint">
-          <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
-            <path
-              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
-          </svg>
-          Drag the gold handle &middot; use slider &middot; or nudge buttons
-        </div>
       </div>
 
       <!-- Results / control panel -->
@@ -272,7 +265,7 @@
             <span class="slider-label">Inner Diameter</span>
             <div class="bignum"><span id="bn">18.00</span><span class="bnu">mm</span></div>
           </div>
-          <div class="slider-row">
+          <div class="slider-row" style="margin-bottom:16px">
             <button class="fb" id="mbar-minus">&minus;</button>
             <div class="msl-wrap">
               <input type="range" id="msl" min="5" max="40" step="0.1" value="18">
@@ -280,79 +273,7 @@
             </div>
             <button class="fb" id="mbar-plus">+</button>
           </div>
-          <div class="nudge-row">
-            <button class="nb" id="nudge-m1">&minus;1</button>
-            <button class="nb" id="nudge-m05">&minus;&frac12;</button>
-            <button class="nb" id="nudge-m01">&minus;.1</button>
-            <span class="nbu">mm</span>
-            <button class="nb" id="nudge-p01">+.1</button>
-            <button class="nb" id="nudge-p05">+&frac12;</button>
-            <button class="nb" id="nudge-p1">+1</button>
-          </div>
-        </div>
 
-        <!-- Ring size cards -->
-        <div class="rcard">
-          <div class="rcard-label">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-            </svg>
-            Ring Size
-          </div>
-          <div class="sz-grid">
-            <div class="sz-card primary">
-              <div class="sz-flag sz-flag-in">IN</div>
-              <div class="sz-val" id="si">&mdash;</div>
-              <div class="sz-name">Indian</div>
-            </div>
-            <div class="sz-card">
-              <div class="sz-flag sz-flag-us">US</div>
-              <div class="sz-val" id="su">&mdash;</div>
-              <div class="sz-name">US / CA</div>
-            </div>
-            <div class="sz-card">
-              <div class="sz-flag sz-flag-uk">UK</div>
-              <div class="sz-val" id="sk">&mdash;</div>
-              <div class="sz-name">UK / AU</div>
-            </div>
-            <div class="sz-card">
-              <div class="sz-flag sz-flag-eu">EU</div>
-              <div class="sz-val" id="se">&mdash;</div>
-              <div class="sz-name">EU / ISO</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Measurements -->
-        <div class="rcard">
-          <div class="rcard-label">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 14H7v-2h8v2zm3-4H7v-2h11v2zm0-4H7V6h11v2z" />
-            </svg>
-            Measurements
-          </div>
-          <div class="meas-grid">
-            <div class="meas-item"><span class="meas-v" id="md">&mdash;</span><span class="meas-l">Diameter
-                (mm)</span></div>
-            <div class="meas-item"><span class="meas-v" id="mr">&mdash;</span><span class="meas-l">Radius (mm)</span>
-            </div>
-            <div class="meas-item wide"><span class="meas-v" id="mc">&mdash;</span><span class="meas-l">Circumference
-                (mm)</span></div>
-          </div>
-        </div>
-
-        <!-- Warning -->
-        <div id="warn-box" class="warn-box hide">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
-          </svg>
-          <span id="warn-msg"></span>
-        </div>
-
-        <!-- Tools & Export -->
-        <div class="rcard actions-card">
           <div class="act-row">
             <button class="tg" id="snaptg">
               <svg viewBox="0 0 24 24" fill="currentColor">
@@ -389,6 +310,70 @@
               PDF
             </button>
           </div>
+        </div>
+
+        <!-- Measurements -->
+        <div class="rcard">
+          <div class="rcard-label">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 14H7v-2h8v2zm3-4H7v-2h11v2zm0-4H7V6h11v2z" />
+            </svg>
+            Measurements
+          </div>
+          <div class="meas-grid">
+            <div class="meas-item"><span class="meas-v" id="md">&mdash;</span><span class="meas-l">Diameter
+                (mm)</span></div>
+            <div class="meas-item"><span class="meas-v" id="mr">&mdash;</span><span class="meas-l">Radius (mm)</span>
+            </div>
+            <div class="meas-item wide"><span class="meas-v" id="mc">&mdash;</span><span class="meas-l">Circumference
+                (mm)</span></div>
+          </div>
+        </div>
+
+        <!-- Ring size cards -->
+        <div class="rcard">
+          <div class="rcard-label">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+            </svg>
+            Ring Size
+          </div>
+          <div class="sz-grid">
+            <div class="sz-card primary">
+              <div class="sz-flag sz-flag-in">IN</div>
+              <div class="sz-val" id="si">&mdash;</div>
+              <div class="sz-name">Indian</div>
+            </div>
+            <div class="sz-card">
+              <div class="sz-flag sz-flag-us">US</div>
+              <div class="sz-val" id="su">&mdash;</div>
+              <div class="sz-name">US / CA</div>
+            </div>
+            <div class="sz-card">
+              <div class="sz-flag sz-flag-uk">UK</div>
+              <div class="sz-val" id="sk">&mdash;</div>
+              <div class="sz-name">UK / AU</div>
+            </div>
+            <div class="sz-card">
+              <div class="sz-flag sz-flag-eu">EU</div>
+              <div class="sz-val" id="se">&mdash;</div>
+              <div class="sz-name">EU / ISO</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Warning -->
+        <div id="warn-box" class="warn-box hide">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+          </svg>
+          <span id="warn-msg"></span>
+        </div>
+
+        <!-- Re-calibrate -->
+        <div style="padding: 0 16px 20px;">
           <button class="recal-btn" id="meas-recalib-bottom-btn">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path

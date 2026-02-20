@@ -90,11 +90,6 @@ function setupEventListeners() {
     document.getElementById('msl')?.addEventListener('input', (e) => setD(+e.target.value));
     document.getElementById('mbar-plus')?.addEventListener('click', () => nudge(+0.1));
 
-    ['nudge-m1', 'nudge-m05', 'nudge-m01', 'nudge-p01', 'nudge-p05', 'nudge-p1'].forEach(id => {
-        const val = parseFloat(id.replace('nudge-', '').replace('m', '-').replace('p', ''));
-        document.getElementById(id)?.addEventListener('click', () => nudge(val));
-    });
-
     document.getElementById('snaptg')?.addEventListener('click', tSnap);
     document.getElementById('zoomtg')?.addEventListener('click', tZoom);
 
